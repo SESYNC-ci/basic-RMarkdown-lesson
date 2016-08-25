@@ -1,0 +1,7 @@
+# Site Settings
+
+title: "Databases to Documents in RMarkdown"
+email: "cyberhelp@sesync.org"
+description: "Contain an entire workflow in one document."
+baseurl: /basic-RMarkdown-lesson
+styleurl: https://rawgit.com/sesync-ci/lesson-stylesheets/master
