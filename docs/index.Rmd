@@ -2,13 +2,14 @@
 output: ioslides_presentation
 ---
 
-# Databases to Documents with RMarkdown
-
-Instructor: Ian Carroll
-
 ```{r include = FALSE}
+# Set options for knitr at the beginning of the document
 knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
 ```
+
+# Database to Document with RMarkdown
+
+Instructor: Ian Carroll
 
 ## Review
 
@@ -61,7 +62,7 @@ Block quotes, like these two syntax examples, are produced with text indented 4 
 
 A code chunk is fenced with ` ```{r} `, that's three backtick characters, above and ` ``` ` below the code.
 
-> \`\`\`{r eval = TRUE, echo = FALSE}  
+> \`\`\`{r}
 > vals <- c(4, 5, 6)  
 > \`\`\`
 
@@ -83,12 +84,21 @@ vals + 1
 
 ## Exercise
 
-Create a code chunk that reads the "surveys.csv" table into a variable named "surveys", but is essentially invisible.
-
-    ...
+Create a code chunk that reads the "animals" table into a variable named "animals", but is essentially invisible.
 
 ```{r echo = FALSE}
-surveys <- read.csv('data/surveys.csv')
+library(dplyr)
+library(RPostgreSQL)
+con <- dbConnect(PostgreSQL(), dbname = 'portal', host = 'localhost')
+animals <- collect(tbl(con, 'animals'))
+species <- collect(tbl(con, 'species'))
+dbDisconnect(con)
+```
+
+You can't see that it happened, but ...
+
+```{r}
+head(animals)
 ```
 
 ## Create your formatted document
@@ -109,14 +119,14 @@ The `dplyr` package includes `src_*` commands for connecting to three types of d
 
 ```{r eval = TRUE}
 library(dplyr)
-db <- src_sqlite("data/portal.sqlite")
+#db <- src_sqlite("data/portal.sqlite")
 ```
 
 ## Accessing tables
 
 ```{r eval = TRUE}
-surveys <- tbl(db, 'surveys')
-species <- tbl(db, 'species')
+#surveys <- tbl(db, 'surveys')
+#species <- tbl(db, 'species')
 ```
 
 ## Tidy databases
@@ -134,7 +144,7 @@ The last principle encapsulates a core approach to database design: try to never
 Combine information in two tables based on matching the values of variables they share. We use this feature to add information (from the *species* table) pertaining to each species listed in the *counts_1990_winter* summary.
 
 ```{r}
-counts_1990_winter <- filter(surveys, year == 1990) %>%
+counts_1990_winter <- filter(animals, year == 1990) %>%
   select(-year) %>%
   group_by(species_id) %>%
   summarize(count = n())
@@ -142,29 +152,12 @@ counts_1990_winter <- filter(surveys, year == 1990) %>%
 inner_join(counts_1990_winter, species)
 ```
 
-## When **un-**tidy data is okay
-
-Untidy data is often needed for analysis, but it's not a good way to store data. Instead, join the tables only when needed.
-
-```{r}
-library(ggplot2)
-surveys_1990_winter <- filter(surveys, year == 1990) %>%
-  select(-year) %>%
-  inner_join(species) %>%
-  filter(taxa == 'Rodent') %>%
-  collect()
-
-ggplot(data = surveys_1990_winter,
-       aes(x = genus)) +
-  geom_boxplot(aes(y = weight))
-```
-
 ## Exercise
 
 Create a bar plot for the abundance of species in the rodent taxa.
 
 ```{r}
-rodents <- filter(surveys, year == 1990) %>%
+rodents <- filter(animals, year == 1990) %>%
   group_by(species_id) %>%
   summarize(count = n()) %>%
   inner_join(species) %>%
@@ -177,22 +170,9 @@ ggplot(rodents,
 ```
 
 
-
 ## Exercise
 
 The third table, plots, gives details on the plot type. Create a code chunk that shows box plots for the weight of rodents in 1990 across the types of plot.
 
-   ...
+## Publish to GitHub Pages
 
-```{r}
-plots <- tbl(db, 'plots')
-rodents <- filter(surveys, year == 1990) %>%
-  inner_join(species) %>%
-  inner_join(plots) %>%
-  filter(taxa == 'Rodent') %>%
-  collect()
-
-ggplot(rodents,
-       aes(x = plot_type, y = weight)) +
-  geom_boxplot()
-```
