@@ -11,18 +11,18 @@ knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
 
 Instructor: Ian Carroll
 
-## Review
+## A One-Stop Pipeline
 
 The workflow we want to create begins with data, moves through processing, analysis and visualization, and ends with content for a final report or perhaps the complete report itself. We use `git` and GitHub, which facilitate collaboration and maintain project integrity, to manage the creation of this workflow.
 
 But how do we tie it all together to make the workflow ... work?
 
-## Objective
+## Objectives
 
-1. Use RMarkdown and `knitr` to contain the whole workflow in one document.
-1. Connect the workflow to a database rather than a CSV files.
-1. Recognize how modularization helps make workflows successful.
-   
+1. Use the R and RMarkdown languages to script an entire pipeline in one file.
+1. Connect the input of the pipeline to a database.
+1. Publish the output of the pipeline on GitHub Pages.
+
 ## RMarkdown and `knitr`
 
 RMarkdown, like R itself, is both a language and an interpreter. The language component is a set of special characters and structural rules to incorporate in a plain text document that serve as formatting instructions. The interpreter reads the instructions along with any other text to generate a formatted document.
@@ -38,6 +38,12 @@ data
 ```
 
 Take a look at `lesson-4.Rmd` -- there's no output written here.
+
+## Worksheet
+
+The worksheet for this lesson **IS** this document, or at leaset this document with a lot of missing "..." for you to fill in.
+
+To compare the output of your worksheet to this slideshow, press the "Knit" button in RStudio with "worksheet-7.Rmd" open.
 
 ## RMarkdown Formatting
 
