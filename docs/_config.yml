@@ -1,9 +1,30 @@
-# Site Settings
+# Lesson
 
 title: Database to Document in RMarkdown
 handouts: worksheet.Rmd
-tag: v0.1
+tag: v0.0
 lesson: 7
 instructor: Benoît Parmentier
 authors:
  - Ian Carroll
+
+# Slides
+
+slide_sorter:
+ - index
+
+#####################################
+# Only modify content above or risk #
+# merge conflicts with upstream.    #
+#####################################
+
+# Style
+
+styleurl: https://cdn.rawgit.com/sesync-ci/lesson-style/1.1/docs
+reveal: https://cdn.rawgit.com/hakimel/reveal.js/3.5.0
+
+# Jekyll
+
+markdown: kramdown
+collections:
+  - slides
