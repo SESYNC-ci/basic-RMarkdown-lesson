@@ -246,7 +246,7 @@ output:
 <p>For example:</p>
 
 <blockquote>
-<p>```{r assign_vals, echo = FALSE} vals &lt;- c(4, 5, 6)<br/>```</p>
+<p>```{r assign_vals, echo = FALSE}<br/>vals &lt;- c(4, 5, 6)<br/>```</p>
 </blockquote>
 
 <p>will (by default) evaluate the content but not show the code in the document.</p>
@@ -564,7 +564,58 @@ F Statistic
 <li>Notice the essential (but empty) &#39;docs/_config.yml&#39; file</li>
 <li>Commit &amp; Push</li>
 <li>Enable GitHub Pages: Settings &gt; master/docs folder</li>
-</ul></article></slide>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Solutions</h2></hgroup><article  id="solutions">
+
+</article></slide><slide class=''><hgroup><h2>Solution 1</h2></hgroup><article  id="solution-1">
+
+<p>To compare the output of your worksheet to this slide, press the &quot;Knit&quot; button in RStudio.</p>
+
+</article></slide><slide class=''><hgroup><h2>Solution 2</h2></hgroup><article  id="solution-2">
+
+<table class = 'rmdtable'>
+<tr class="header">
+<th align="left">charcter</th>
+<th align="left">format</th>
+</tr>
+<tr class="odd">
+<td align="left">*</td>
+<td align="left"><em>italics</em></td>
+</tr>
+<tr class="even">
+<td align="left">**</td>
+<td align="left"><strong>bold</strong></td>
+</tr>
+<tr class="odd">
+<td align="left">^</td>
+<td align="left">super<sup>script</sup></td>
+</tr>
+<tr class="even">
+<td align="left">~~</td>
+<td align="left"><del>strikethrough</del></td>
+</tr>
+</table>
+
+</article></slide><slide class=''><hgroup><h2>Solution 3</h2></hgroup><article  id="solution-3">
+
+<pre class = 'prettyprint lang-r'>animals</pre>
+
+<pre >## # Source:   table&lt;animals&gt; [?? x 9]
+## # Database: postgres 9.6.3 [icarroll@localhost:5432/portal]
+##       id month   day  year plot_id species_id   sex hindfoot_length weight
+##    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;   &lt;int&gt;      &lt;chr&gt; &lt;chr&gt;           &lt;int&gt;  &lt;int&gt;
+##  1     2     7    16  1977       3         NL     M              33     NA
+##  2     3     7    16  1977       2         DM     F              37     NA
+##  3     4     7    16  1977       7         DM     M              36     NA
+##  4     5     7    16  1977       3         DM     M              35     NA
+##  5     6     7    16  1977       1         PF     M              14     NA
+##  6     7     7    16  1977       2         PE     F              NA     NA
+##  7     8     7    16  1977       1         DM     M              37     NA
+##  8     9     7    16  1977       1         DM     F              34     NA
+##  9    10     7    16  1977       6         PF     F              20     NA
+## 10    11     7    16  1977       5         DS     F              53     NA
+## # ... with more rows</pre></article></slide>
 
 
   <slide class="backdrop"></slide>

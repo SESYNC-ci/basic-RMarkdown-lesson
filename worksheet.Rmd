@@ -8,16 +8,13 @@ output:
 # Set options for knitr at the beginning of the document
 knitr::opts_chunk$set(cache = TRUE)
 
-# Read in configuration variables, but remove and hard code the worksheet
-library(yaml)
-config <- yaml.load_file("_config.yml")
-config$handouts <- gsub('.', paste0('-', config$lesson, '.'),
-                        config$handouts, fixed = TRUE)
+# Delete the following setting upon reaching Exercise 3
+knitr::opts_chunk$set(eval = FALSE)
 ```
 
 # Database to Document with RMarkdown
 
-Instructor: `r config$instructor`
+Instructor: Benoît Parmentier
 
 ## The End of the Pipeline
 
@@ -45,7 +42,7 @@ RMarkdown calls the `knitr` package to excute everything fenced off as R script 
 
 ## Seeing is believing
 
-Open the handout `r config$handouts`, which is the RMarkdown source for this presentation. 
+Open the handout `lesson-7.Rmd`, which is the RMarkdown source for this presentation. 
 
 ```{r}
 vals <- c(4, 5, 6)
@@ -61,7 +58,7 @@ The RMarkdown source for this lesson, with portions replaced by `...` that are f
 
 ## Exercise 1
 
-To compare the output of your worksheet to this slide, press the "Knit" button in RStudio.
+...
 
 ## RMarkdown Syntax
 
@@ -107,12 +104,7 @@ Embedding text between pairs of special characters induces some simple formattin
 
 ## Exercise 2
 
-charcter | format
----------|----------
-*        | *italics*
-**       | **bold**
-^        | super^script^
-~~       | ~~strikethrough~~
+...
 
 ## RMarkdown Syntax
 
@@ -160,16 +152,7 @@ vals + 1
 
 ## Exercise 3
 
-```{r include = FALSE}
-library(dplyr)
-library(RPostgreSQL)
-con <- dbConnect(PostgreSQL(), dbname = 'portal', host = 'localhost')
-animals <- tbl(con, 'animals')
-```
-
-```{r}
-animals
-```
+...
 
 ## Construct the Pipeline
 
