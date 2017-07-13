@@ -7,10 +7,7 @@ output:
 
 ```{r include = FALSE}
 # Set options for knitr at the beginning of the document
-knitr::opts_chunk$set(cache = TRUE)
-
-# Delete the following setting upon reaching Exercise 3
-knitr::opts_chunk$set(eval = FALSE)
+knitr::opts_chunk$set(cache = TRUE, eval = FALSE)
 ```
 
 # Database to Document with RMarkdown

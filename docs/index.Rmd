@@ -163,12 +163,9 @@ vals + 1
 
 Change the settings at the beginning of your worksheet to allow R code evaluation:
 
-> \`\`\`{r include = FALSE}
-> # Set options for knitr at the beginning of the document
-> knitr::opts_chunk$set(cache = TRUE)
->
-> # Delete the following setting upon reaching Exercise 3
-> knitr::opts_chunk$set(eval = FALSE)
+> \`\`\`{r include = FALSE}  
+> # Set options for knitr at the beginning of the document  
+> knitr::opts_chunk$set(cache = TRUE, eval = TRUE)  
 > \`\`\`
 
 ## Exercise 3

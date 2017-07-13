@@ -263,12 +263,20 @@ output:
 
 <pre >## [1] 5 6 7</pre>
 
+</article></slide><slide class=''><hgroup><h2>Exercise 3: Prelude</h2></hgroup><article  id="exercise-3-prelude">
+
+<p>Change the settings at the beginning of your worksheet to allow R code evaluation:</p>
+
+<blockquote>
+<p>```{r include = FALSE}<br/># Set options for knitr at the beginning of the document<br/>knitr::opts_chunk$set(cache = TRUE, eval = TRUE)<br/>```</p>
+</blockquote>
+
 </article></slide><slide class=''><hgroup><h2>Exercise 3</h2></hgroup><article  id="exercise-3">
 
 <pre class = 'prettyprint lang-r'>animals</pre>
 
 <pre >## # Source:   table&lt;animals&gt; [?? x 9]
-## # Database: postgres 9.6.3 [icarroll@localhost:5432/portal]
+## # Database: postgres 9.6.3 [Benoit@localhost:5432/portal]
 ##       id month   day  year plot_id species_id   sex hindfoot_length weight
 ##    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;   &lt;int&gt;      &lt;chr&gt; &lt;chr&gt;           &lt;int&gt;  &lt;int&gt;
 ##  1     2     7    16  1977       3         NL     M              33     NA
@@ -602,7 +610,7 @@ F Statistic
 <pre class = 'prettyprint lang-r'>animals</pre>
 
 <pre >## # Source:   table&lt;animals&gt; [?? x 9]
-## # Database: postgres 9.6.3 [icarroll@localhost:5432/portal]
+## # Database: postgres 9.6.3 [Benoit@localhost:5432/portal]
 ##       id month   day  year plot_id species_id   sex hindfoot_length weight
 ##    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;   &lt;int&gt;      &lt;chr&gt; &lt;chr&gt;           &lt;int&gt;  &lt;int&gt;
 ##  1     2     7    16  1977       3         NL     M              33     NA
