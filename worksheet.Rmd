@@ -2,6 +2,7 @@
 output:
   ioslides_presentation:
     widescreen: true
+    self_contained: true
 ---
 
 ```{r include = FALSE}

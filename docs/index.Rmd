@@ -2,6 +2,7 @@
 output:
   ioslides_presentation:
     widescreen: true
+    self_contained: true
 ---
 
 ```{r include = FALSE}
@@ -157,6 +158,18 @@ is accessible in another:
 ```{r}
 vals + 1
 ```
+
+## Exercise 3: Prelude
+
+Change the settings at the beginning of your worksheet to allow R code evaluation:
+
+> \`\`\`{r include = FALSE}
+> # Set options for knitr at the beginning of the document
+> knitr::opts_chunk$set(cache = TRUE)
+>
+> # Delete the following setting upon reaching Exercise 3
+> knitr::opts_chunk$set(eval = FALSE)
+> \`\`\`
 
 ## Exercise 3
 
