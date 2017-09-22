@@ -1,7 +1,7 @@
 ---
 output:
   ioslides_presentation:
-    widescreen: true
+    widescreen: no
     self_contained: true
 ---
 
@@ -16,7 +16,7 @@ config$handouts <- gsub('.', paste0('-', config$lesson, '.'),
                         config$handouts, fixed = TRUE)
 ```
 
-# Database to Document with RMarkdown
+# Data to Document with RMarkdown
 
 Instructor: `r config$instructor`
 
@@ -29,7 +29,6 @@ RMarkdown offers the tantalizing opportunity to merge content and produce that f
 ## Objectives
 
 1. Use the R and RMarkdown languages to script an entire pipeline in one file.
-1. Connect the input of the pipeline to a database.
 1. Publish the output of the pipeline on GitHub Pages.
 
 ## RMarkdown
@@ -40,7 +39,7 @@ RMarkdown, like R itself, is both a language and an interpreter.
 
 **Interpreter:** software that converts the text and instructions into a formatted document of specified type
 
-## RMarkdown + `knitr`
+## RMarkdown + knitr
 
 RMarkdown calls the `knitr` package to excute everything fenced off as R script within an RMarkdown document, and then selectively includes results in the formatted document.
 
@@ -172,9 +171,7 @@ Change the settings at the beginning of your worksheet to allow R code evaluatio
 
 ```{r include = FALSE}
 library(dplyr)
-library(RPostgreSQL)
-con <- dbConnect(PostgreSQL(), dbname = 'portal', host = 'localhost')
-animals <- tbl(con, 'animals')
+animals <- read.csv('data/animals.csv', na.strings = '')
 ```
 
 ```{r}
@@ -189,7 +186,7 @@ It's better to modularize your script: break it into separate chunks that perfor
 
 ```{r wrangle, include = FALSE}
 # get taxonomic data
-species <- tbl(con, 'species')
+species <- read.csv('data/species.csv')
 
 # group animals captured in 1990 by species_id
 # and summarize with total abundance and average weight
@@ -198,11 +195,7 @@ rodents <- filter(animals, year == 1990) %>%
   inner_join(species, c('species_id' = 'id')) %>%
   filter(taxa == 'Rodent') %>%
   group_by(species_id) %>%
-  summarize(count = n(), weight = mean(weight)) %>%
-  collect()
-
-# disconnect from the PostgreSQL server
-dbDisconnect(con)
+  summarize(count = n(), weight = mean(weight))
 ```
 
 ```{r model, dependson = c('wrangle'), include = FALSE}
@@ -253,7 +246,7 @@ grid.arrange(figA, figB, ncol = 2)
 Your handouts repository on GitHub includes a free web hosting service known as GitHub Pages. Publish your worksheet there with the following steps.
 
 - Copy the resulting HTML file to 'docs/index.html'
-- Notice the essential (but empty) 'docs/_config.yml' file
+- Notice the (currently empty) 'docs/_config.yml' file
 - Commit & Push
 - Enable GitHub Pages: Settings > master/docs folder
 
@@ -276,16 +269,9 @@ charcter | format
 
 ```{r include = FALSE}
 library(dplyr)
-library(RPostgreSQL)
-con <- dbConnect(PostgreSQL(), dbname = 'portal', host = 'localhost')
-animals <- tbl(con, 'animals')
+animals <- read.csv('data/animals.csv', na.strings = '')
 ```
 
 ```{r}
 animals
-```
-
-```{r include = FALSE}
-# this is just cleanup, not part of the solution
-dbDisconnect(con)
 ```
