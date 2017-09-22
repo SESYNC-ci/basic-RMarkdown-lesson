@@ -1,7 +1,7 @@
 ---
 output:
   ioslides_presentation:
-    widescreen: true
+    widescreen: no
     self_contained: true
 ---
 
@@ -12,7 +12,7 @@ knitr::opts_chunk$set(cache = TRUE, eval = FALSE)
 
 # Database to Document with RMarkdown
 
-Instructor: Benoît Parmentier
+Instructor: Ian Carroll
 
 ## The End of the Pipeline
 
@@ -23,7 +23,6 @@ RMarkdown offers the tantalizing opportunity to merge content and produce that f
 ## Objectives
 
 1. Use the R and RMarkdown languages to script an entire pipeline in one file.
-1. Connect the input of the pipeline to a database.
 1. Publish the output of the pipeline on GitHub Pages.
 
 ## RMarkdown
@@ -160,7 +159,7 @@ It's better to modularize your script: break it into separate chunks that perfor
 
 ```{r wrangle, include = FALSE}
 # get taxonomic data
-species <- tbl(con, 'species')
+species <- read.csv('data/species.csv')
 
 # group animals captured in 1990 by species_id
 # and summarize with total abundance and average weight
@@ -169,11 +168,7 @@ rodents <- filter(animals, year == 1990) %>%
   inner_join(species, c('species_id' = 'id')) %>%
   filter(taxa == 'Rodent') %>%
   group_by(species_id) %>%
-  summarize(count = n(), weight = mean(weight)) %>%
-  collect()
-
-# disconnect from the PostgreSQL server
-dbDisconnect(con)
+  summarize(count = n(), weight = mean(weight))
 ```
 
 ```{r model, dependson = c('wrangle'), include = FALSE}
@@ -224,7 +219,7 @@ grid.arrange(figA, figB, ncol = 2)
 Your handouts repository on GitHub includes a free web hosting service known as GitHub Pages. Publish your worksheet there with the following steps.
 
 - Copy the resulting HTML file to 'docs/index.html'
-- Notice the essential (but empty) 'docs/_config.yml' file
+- Notice the (currently empty) 'docs/_config.yml' file
 - Commit & Push
 - Enable GitHub Pages: Settings > master/docs folder
 
@@ -254,9 +249,4 @@ animals <- tbl(con, 'animals')
 
 ```{r}
 animals
-```
-
-```{r include = FALSE}
-# this is just cleanup, not part of the solution
-dbDisconnect(con)
 ```
