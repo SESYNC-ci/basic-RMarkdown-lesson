@@ -10,4 +10,4 @@
 -------------------------------------->
 
 [lesson]: https://sesync-ci.github.io/basic-RMarkdown-lesson
-[slideshow]: https://sesync-ci.github.io/basic-RMarkdown-lesson
+[slideshow]: https://sesync-ci.github.io/basic-RMarkdown-lesson/slides

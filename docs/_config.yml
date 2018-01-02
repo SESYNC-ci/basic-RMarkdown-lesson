@@ -1,7 +1,12 @@
 # Site
 
 title: Database to Document in RMarkdown
-handouts: worksheet.Rmd
+handouts:
+ - worksheet.Rmd
+ - data/species.csv
+ - data/animals.csv
+ - data/plots.csv
+ - data/README.md
 tag: v0.0
 lesson: 4
 instructor: Ian Carroll
