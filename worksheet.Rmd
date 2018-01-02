@@ -204,7 +204,8 @@ stargazer(model, type = 'html')
 
 ## My Portal Study
 
-Adjust your figures to fit nicely in the output document, but don't expect too much.
+Adjust your figures to fit nicely in the output document, but don't expect fine
+control over placement of distinct images.
 
 ```{r include = FALSE}
 library(gridExtra)

@@ -7,7 +7,9 @@ output:
 
 ```{r include = FALSE}
 # Set options for knitr at the beginning of the document
-knitr::opts_chunk$set(cache = TRUE)
+library(knitr)
+opts_knit$set(root.dir = normalizePath('../'))
+opts_chunk$set(cache = FALSE)
 
 # Read in configuration variables, but remove and hard code the worksheet
 library(yaml)
@@ -231,7 +233,8 @@ stargazer(model, type = 'html')
 
 ## My Portal Study
 
-Adjust your figures to fit nicely in the output document, but don't expect too much.
+Adjust your figures to fit nicely in the output document, but don't expect fine
+control over placement of distinct images.
 
 ```{r include = FALSE}
 library(gridExtra)
