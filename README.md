@@ -1,4 +1,4 @@
-[![lifecycle](https://img.shields.io/badge/lifecycle-archived-lightgrey.svg)](https://github.com/orgs/SESYNC-ci/projects/2)
+[![lifecycle](https://img.shields.io/badge/lifecycle-archived-lightgrey.svg)](https://github.com/SESYNC-ci/sesync-ci.github.io/blob/master/lesson/lesson-lifecycle.md#archived)
 
 ## Basic RMarkdown
 
